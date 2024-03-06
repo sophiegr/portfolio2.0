@@ -2,7 +2,7 @@
 	<title>Resume</title>
 </svelte:head>
 
-<body>
+<!-- <body> -->
     <h1>My Resume</h1>
     <section>
       <h2>Education</h2>
@@ -54,4 +54,4 @@
             </ul>
         </article>
     </section>
-</body>
+<!-- </body> -->

@@ -7,11 +7,11 @@
 	<title>Projects</title>
 </svelte:head>
 
-<body>
+<!-- <body> -->
     <h1>{ projects.length } Projects</h1>
     <div class="projects">
         {#each projects as p}
 			<Project info={p} />
         {/each}
     </div>
-</body>
+<!-- </body> -->
