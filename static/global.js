@@ -40,7 +40,7 @@ for (let url in pages) {
 }
 
 
-document.body.insertAdjacentHTML("afterbegin", `
+/* document.body.insertAdjacentHTML("afterbegin", `
 	<label class="color-scheme">
 		Theme:
 		<select>
@@ -49,7 +49,7 @@ document.body.insertAdjacentHTML("afterbegin", `
             <option value="dark">Dark</option>
 		</select>
 	</label>`
-);
+); */
 
 let select = document.querySelector("select");
 
