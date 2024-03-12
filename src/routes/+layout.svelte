@@ -1,24 +1,31 @@
 <slot />
 
-document.body.insertAdjacentHTML("afterbegin", `
-	<label class="color-scheme">
+<label class="color-scheme">
 		Theme:
-		<select>
+        <select bind:value={ colorScheme }>
             <option value="light dark">Automatic</option>
             <option value="light">Light</option>
             <option value="dark">Dark</option>
 		</select>
-	</label>`
-);
+</label>
 
 <script>
-    let colorScheme = "light dark";
-
-
-
+    let localStorage = globalThis.localStorage ?? {};
+    $: localStorage.colorScheme = colorScheme;
+    let colorScheme = localStorage.colorScheme ? localStorage.colorScheme : "light dark";
+    let root = globalThis?.document?.documentElement;
+    $: root?.style.setProperty("color-scheme", colorScheme);
+    // let profileData = fetch("https://api.github.com/users/your-username");
+    let profileData = {
+        ok: true,
+        json: async () => ({
+            followers: 100,
+            following: 100,
+            public_repos: 100,
+            public_gists: 100,
+        })
+    }; 
 </script>
-
-
 
 <style>
     .color-scheme {
