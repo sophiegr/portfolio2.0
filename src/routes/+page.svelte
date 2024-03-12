@@ -14,17 +14,26 @@
 
     <section>
         <h2>My Github Stats</h2>
-        <dl>
-            <dt>Followers</dt>
-            <dd></dd>
-            <dd><profileData class="followers"></profileData></dd>
-          
-            <dt>Following</dt>
-            <dd><profileData class="following"></profileData></dd>
-          
-            <dt>Public Repos</dt>
-            <dd><profileData class="public"></profileData></dd>
-        </dl>
+
+        {#await fetch("https://api.github.com/users/sophiegr") }
+        {:then response}
+        {#await response.json()}
+        {:then data}
+            <dl>
+                <dt>Followers: { JSON.stringify(data.followers) }</dt>
+                <dt>Following: { JSON.stringify(data.following) }</dt>
+                <dt>Public Repos: { JSON.stringify(data.public_repos) }</dt>
+            </dl>
+            {:catch error}
+                <p class="error">
+                    Something went wrong: {error.message}
+                </p>
+            {/await}
+        {:catch error}
+            <p class="error">
+                Something went wrong: {error.message}
+            </p>
+        {/await}
     </section>
 
     <h2>Latest Projects:</h2>

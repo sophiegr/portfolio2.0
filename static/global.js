@@ -9,7 +9,7 @@ function $$ (selector, context = document) {
 // if (currentLink) { // or if (currentLink !== undefined)
 // 	currentLink.classList.add("current");
 // }
-
+/* 
 let pages = {
 	"": "Home",
 	"projects": "Projects",
@@ -36,4 +36,4 @@ for (let url in pages) {
         a.target = "_blank";
     }
     nav.append(a);
-}
+} */
