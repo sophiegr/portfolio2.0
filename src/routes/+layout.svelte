@@ -23,15 +23,6 @@
     let root = globalThis?.document?.documentElement;
     $: root?.style.setProperty("color-scheme", colorScheme);
     let profileData = fetch("https://api.github.com/users/your-username");
-    /* let profileData = {
-        ok: true,
-        json: async () => ({
-            followers: 100,
-            following: 100,
-            public_repos: 100,
-            public_gists: 100,
-        })
-    };  */
 </script>
 
 <nav>

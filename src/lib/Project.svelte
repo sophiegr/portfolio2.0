@@ -1,13 +1,12 @@
 <article>
-    <svelte:element this={"h" + hLevel}>{ p.title }</svelte:element>
-    <img src={p.image} alt="">
-    <p>{p.description}</p>
-    <div>{p.year}</div>
+    <svelte:element this={"h" + hLevel}>{ info.title }</svelte:element>
+    <img src={info.image} alt="">
+    <p>{info.description}</p>
+    <div>{info.year}</div>
 </article>
 
 <script>
     export let info = {};
-    let p = info;
     export let hLevel = 2;
 </script>
 

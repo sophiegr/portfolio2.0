@@ -3,15 +3,18 @@
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     export let data = [];
     let sliceGenerator = d3.pie().value(d => d.value);
-    let arcData = sliceGenerator(data);
-    let arcs = arcData.map(d => arcGenerator(d));
+    $: arcData = sliceGenerator(data);
+    $: arcs = arcData.map(d => arcGenerator(d));
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
+    export let selectedIndex = -1;
 </script>
 
 <div class="container">
 	<svg viewBox="-50 -50 100 100">
-		{#each arcs as arc, i}
-            <path d={ arc } fill={ colors(i) } />
+        {#each arcs as arc, index}
+	        <path d={arc} fill={ colors(index) }
+	            class:selected={selectedIndex === index}
+	            on:click={e =>  selectedIndex = selectedIndex === index ? -1 : index }  />
         {/each}
 	</svg>
     <div class="legendbox">
@@ -25,6 +28,7 @@
         </ul>
     </div>
 </div>
+
 
 <style>
     div.container {
@@ -40,6 +44,27 @@
         margin-block: 2em;
         overflow: visible;
     }
+
+    svg:has(path:hover) {
+        path:not(:hover) {
+            opacity: 50%;
+	    }
+    }
+
+    .selected {
+        --color: oklch(60% 45% 0) !important;
+
+        &:is(path) {
+            fill: var(--color);
+        }
+    }
+
+
+    path {
+	    transition: 300ms;
+        cursor: pointer;
+    }
+
 
     div.legendbox {
         flex: 1;
