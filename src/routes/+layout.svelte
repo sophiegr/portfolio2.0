@@ -41,12 +41,12 @@
 </nav>
 
 <style>
-    .color-scheme {
+    label.color-scheme {
+        display: block;
         position: absolute;
         top: 1rem;
-        right: 15rem;
+        right: 1rem;
         font-size: 80%;
-        font-family: inherit;
     }
 </style>
 

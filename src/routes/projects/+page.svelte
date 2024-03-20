@@ -1,6 +1,6 @@
-<script> 
-	import projects from '$lib/projects.json'; 
-	import Project from "$lib/Project.svelte";
+<script>
+    import projects from '$lib/projects.json'; 
+    import Project from "$lib/Project.svelte";
     import Pie from '$lib/Pie.svelte';
     import * as d3 from 'd3';
     let rolledData = d3.rollups(projects, v => v.length, d => d.year);
@@ -24,7 +24,7 @@
 <!-- <body> -->
     <h1>{ projects.length } Projects</h1>
     <Pie data={pieData} />
-    <input type="search" bind:value={query}
+    <input class="search" type="search" bind:value={query}
        aria-label="Search projects" placeholder="🔍 Search projects…" />
     <div class="projects">
         {#each projects as p}
@@ -32,3 +32,14 @@
         {/each}
     </div>
 <!-- </body> -->
+
+<style>
+    input.search {
+        font: inherit;
+        width: 100%;
+        padding: 0.3em;
+        margin-top: -0.5em;
+        margin-bottom: 2em;
+        text-align: left;
+    }
+</style>
